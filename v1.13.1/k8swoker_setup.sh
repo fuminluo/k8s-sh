@@ -1,6 +1,6 @@
 # 重置kubeadm
 echo "----------------重置系统环境--------------------"
-#sudo kubeadm reset
+sudo kubeadm reset
 
 # 重置iptables
 iptables -F && iptables -t nat -F && iptables -t mangle -F && iptables -X
@@ -35,7 +35,7 @@ if [  $? -ne 0 ];then
     # 安装docker
     sudo yum install -y yum-utils device-mapper-persistent-data lvm2
     sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
-    sudo yum install -y docker-ce-18.03.1.ce-1.e17.centos
+    sudo yum install -y docker-ce
     # 重启docker
     sudo systemctl enable docker
     sudo systemctl restart docker
