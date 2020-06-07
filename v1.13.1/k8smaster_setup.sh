@@ -35,7 +35,7 @@ if [  $? -ne 0 ];then
     sudo yum remove -y $(rpm -qa | grep docker)
     # 安装docker
     sudo yum install -y yum-utils device-mapper-persistent-data lvm2
-    sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+    sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
     sudo yum install -y docker-ce-18.03.1.ce-1.e17.centos
     # 重启docker
     sudo systemctl enable docker
@@ -123,7 +123,7 @@ kubeadm config print init-defaults ClusterConfiguration > kubeadm.conf
 
 # 修改配置文件
 # 修改镜像仓储地址
-sed -i 's#imageRepository: .*#imageRepository: registry.cn-beijing.aliyuncs.com/imcto#g' kubeadm.conf
+#sed -i 's#imageRepository: .*#imageRepository: registry.cn-beijing.aliyuncs.com/imcto#g' kubeadm.conf
 # 修改版本号
 sed -i "s/kubernetesVersion: .*/kubernetesVersion: v1.13.1/g" kubeadm.conf
 sed -i "s/advertiseAddress: .*/advertiseAddress: $IP/g" kubeadm.conf
